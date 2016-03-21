@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="ProductReviewApp">
+<head>
+  <title>Products and Reviews</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body>
+
+  <div ng-controller="ProductTrackerController as productTracker">
+    <h1>Products and Reviews</h1>
+    <div >
+      <div ng-hide="productTracker.loggedIn">
+        <form ng-submit="productTracker.login()">
+          <div class="form-group">
+            <input placeholder="Enter a username" ng-model="productTracker.username" type="text" value="" class="form-control">
+          </div>
+          <div id="loginButton">
+            <button class="btn btn-primary" type="submit">
+              <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"> Enter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div ng-show="productTracker.loggedIn">
+        <h2>Greetings, {{productTracker.username}}</h2>
+
+        <h3>Got a product for sale?</h3>
+        <form ng-submit="productTracker.addProduct()">
+          <div class="form-group">
+            <label for="productName">Product:</label>
+            <input type="text" class="form-control" id="productName" ng-model="productTracker.product.name">
+          </div>
+          <div class="form-group">
+            <label for="productDescription">Description:</label>
+            <input type="text" class="form-control" id="productDescription" ng-model="productTracker.product.description">
+          </div>
+          <div class="form-inline">
+            <label for="productPrice">Price:</label>
+            $<input type="number" class="form-control" id="productPrice" ng-model="productTracker.product.price">
+          </div>
+          <button type="submit" class="btn btn-info">New Product</button>
+        </form>
+      </div>
+
+
+    </div>
+
+
+
+  </body>
+  </html>
